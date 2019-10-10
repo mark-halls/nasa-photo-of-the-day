@@ -1,20 +1,31 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
 import axios from "axios";
+import styled from "styled-components";
 
 import Header from "./components/Header";
 import Explanation from "./components/Explanation";
 import BigImage from "./components/BigImage";
-import PreviousImages from "./components/PreviousImages";
-
-import "./App.css";
 
 const myKey = "DEMO_KEY";
+// const myKey = "DEMO";
+
+const GlobalContainer = styled.div`
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  font-size: 62.5%;
+  background-color: #0b3d91;
+  color: white;
+  min-height: 100%;
+  margin: 0;
+  text-align: center;
+`;
 
 function App() {
   // 7 days worth of image data
   const [images, setImages] = useState({});
-  const [imageIndex, setImageIndex] = useState("");
 
   useEffect(() => {
     axios
@@ -23,7 +34,7 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <GlobalContainer className="App">
       <Header />
       <BigImage source={images.hdurl} />
       <Explanation
@@ -31,7 +42,7 @@ function App() {
         title={images.title}
         date={images.date}
       />
-    </div>
+    </GlobalContainer>
   );
 }
 

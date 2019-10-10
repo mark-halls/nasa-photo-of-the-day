@@ -1,13 +1,30 @@
 import React from "react";
+import styles from "styled-components";
+
+const Title = styles.h3`
+  font-size: 1.75rem;
+  max-width: 80%;
+`;
+
+const Date = styles.p`
+  font-size: 1.5rem;
+  margin: 0;
+`;
+
+const Info = styles.p`
+  font-size: 1.5rem;
+  max-width: 80%;
+  text-align: justify;
+`;
 
 const Explanation = props => {
-  if (!props.title) return <h3>Loading...</h3>;
+  if (!props.title) return <Title>Loading...</Title>;
 
   return (
     <>
-      <h3 className="title">{props.title}</h3>
-      <p>{props.date}</p>
-      <p>{props.explanation}</p>
+      <Title className="title">{props.title}</Title>
+      <Date>{props.date}</Date>
+      <Info>{props.explanation}</Info>
     </>
   );
 };
